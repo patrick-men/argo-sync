@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitea
+  source:
+    path: apps/gitea
+    repoURL: https://github.dev/patrick-men/argo-sync.git
+    targetRevision: HEAD
