@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kf2
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/patrick-men/argo-sync
+      path: apps/gitea
+      targetRevision: HEAD
+    - repoURL: https://github.com/patrick-men/argo-sync
+      path: apps/kf2
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
