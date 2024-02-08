@@ -7,6 +7,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: gitea
+  project: default
   source:
     path: apps/gitea
     repoURL: https://github.dev/patrick-men/argo-sync.git
