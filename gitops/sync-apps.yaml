@@ -18,6 +18,9 @@ spec:
     # - repoURL: https://github.com/patrick-men/argo-sync
     #   path: apps/inss
     #   targetRevision: HEAD
+    - repoURL: https://github.com/patrick-men/argo-sync
+      path: apps/testing
+      targetRevision: testing
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
