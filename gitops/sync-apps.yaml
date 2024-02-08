@@ -12,6 +12,12 @@ spec:
     - repoURL: https://github.com/patrick-men/argo-sync
       path: apps/kf2
       targetRevision: HEAD
+    - repoURL: https://github.com/patrick-men/argo-sync
+      path: apps/roll
+      targetRevision: HEAD
+    - repoURL: https://github.com/patrick-men/argo-sync
+      path: apps/inss
+      targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:

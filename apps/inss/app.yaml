@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: inss
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/patrick-men/argo-sync
+    path: apps/inss/deployment
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true

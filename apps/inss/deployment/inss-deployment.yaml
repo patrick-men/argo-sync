@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insurgency-game-server
+  namespace: insurgency
+spec:
+  selector:
+    matchLabels:
+      app: insurgency-game-server
+  template:
+    metadata:
+      labels:
+        app: insurgency-game-server
+    spec:
+      containers:
+        - name: insurgency-container
+          image: gameservermanagers/gameserver:inss
+          ports:
+            - containerPort: 27102
+          volumeMounts:
+            - name: insurgencydata
+              mountPath: /data
+      volumes:
+        - name: insurgencydata
+          persistentVolumeClaim:
+            claimName: insurgency-pvc

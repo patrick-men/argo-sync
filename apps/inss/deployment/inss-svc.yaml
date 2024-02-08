@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: insurgency-service
+  namespace: insurgency
+spec:
+  selector:
+    app: insurgency-game-server
+  type: NodePort
+  ports:
+    - name: insurgency-port
+      protocol: UDP
+      port: 27102   
+      targetPort: 27102  
+      nodePort: 31111
