@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
     repoURL: https://github.com/patrick-men/argo-sync
-    path: apps/kf2
+    path: apps/kf2/deployment
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
