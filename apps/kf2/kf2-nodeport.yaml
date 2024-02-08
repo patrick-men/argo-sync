@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kf2-service
+  namespace: kf2
+spec:
+  selector:
+    app: kf2-game-server
+  type: NodePort
+  ports:
+    - name: port-7777
+      protocol: UDP
+      port: 7777   # Port you want to expose
+      targetPort: 7777  # Port your application is listening on
+      nodePort: 31112
+    - name: port-8880-web
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 31111

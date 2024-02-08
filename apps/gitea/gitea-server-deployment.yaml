@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: server
+    app: gitea
+  name: server
+  namespace: gitea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/gitea: "true"
+        io.kompose.service: server
+    spec:
+      containers:
+        - env:
+            - name: GITEA__database__DB_TYPE
+              value: postgres
+            - name: GITEA__database__HOST
+              value: db-service.gitea.svc.cluster.local:5432
+            - name: GITEA__database__NAME
+              value: gitea
+            - name: GITEA__database__PASSWD
+              value: gitea
+            - name: GITEA__database__USER
+              value: gitea
+            - name: USER_GID
+              value: "1000"
+            - name: USER_UID
+              value: "1000"
+          image: gitea/gitea:nightly
+          name: gitea
+          ports:
+            - containerPort: 3000
+            - containerPort: 22
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: server-claim0
+            - mountPath: /etc/timezone
+              name: server-claim1
+              readOnly: true
+            - mountPath: /etc/localtime
+              name: server-claim2
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - name: server-claim0
+          persistentVolumeClaim:
+            claimName: server-claim0
+        - name: server-claim1
+          persistentVolumeClaim:
+            claimName: server-claim1
+            readOnly: true
+        - name: server-claim2
+          persistentVolumeClaim:
+            claimName: server-claim2
+            readOnly: true
+status: {}

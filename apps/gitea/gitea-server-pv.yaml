@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: giteaserver-pv-data
+  labels:
+    type: local
+  namespace: gitea
+
+spec:
+  storageClassName: gitea-manual-data
+  capacity:
+    storage: "2Gi"
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/raiddata/gitea/data"
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: giteaserver-pv-timezone
+  labels:
+    type: local
+
+spec:
+  storageClassName: gitea-manual-timezone
+  capacity:
+    storage: "100Mi"
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: "/etc/timezone"
+
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: giteaserver-pv-localtime
+  labels:
+    type: local
+
+spec:
+  storageClassName: gitea-manual-localtime
+  capacity:
+    storage: "100Mi"
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: "/etc/localtime"
