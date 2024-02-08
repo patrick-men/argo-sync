@@ -5,9 +5,9 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
+  source:
     repoURL: https://github.com/patrick-men/argo-sync
-    path: apps/gitea
+    path: apps/gitea/deployment
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
