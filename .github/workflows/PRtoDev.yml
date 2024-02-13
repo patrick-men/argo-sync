@@ -1,0 +1,14 @@
+name: 'PRtoDev'
+
+on:
+  commit:
+
+jobs:
+  check_main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check main
+        if: github.base_ref == 'dev' && github.head_ref == 'dev'
+        run: |
+          echo "ERROR: You can only merge to dev from a feature branch"
+          exit 1
