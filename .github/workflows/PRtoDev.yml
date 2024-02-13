@@ -1,7 +1,7 @@
 name: 'PRtoDev'
 
 on:
-  pull_request:
+  commit:
 
 jobs:
   check_main:
