@@ -1,4 +1,4 @@
-name: 'PRtoMain'
+name: 'PRtoDev'
 
 on:
   pull_request:
