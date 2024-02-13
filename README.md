@@ -11,3 +11,12 @@ Due to how ArgoCD works, inactive apps need to be commented out within the app o
 - Once done:
     - Move to own directory in apps
     - PR to main
+
+## GitFlow
+
+From top to bottom:
+
+| Branch         | Merge into |
+|----------------|------------|
+| feature branch | dev        |
+| dev            | main       |
