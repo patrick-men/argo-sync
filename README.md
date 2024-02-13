@@ -8,4 +8,6 @@ Due to how ArgoCD works, inactive apps need to be commented out within the app o
 
 - Work on branch called "testing"
 - Work in directory "apps/dev"
-- Once done, PR to main
+- Once done:
+    - Move to own directory in apps
+    - PR to main
