@@ -5,16 +5,28 @@ metadata:
   namespace: argocd
 spec:
   project: default
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
   source:
     chart: uptime-kuma
     repoURL: https://patrick-men.github.io/kuma-uptime-helm/
     targetRevision: v0.1.2
     helm:
       releaseName: uptime-kuma
-      valueFiles:
-      - apps/dev/values/custom-values.yaml
-  destination:
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      selfHeal: true
+      values: |
+        kuma:
+          name: "kuma"
+          namespace: "kuma"
+        deployment:
+          replicas: "2"
+        storage:
+          pvCapacity: "5Gi"
+          storageClassName: "kuma-sc"
+          localPath: "/mnt/raiddata/kuma"
+        service:
+          type: "NodePort"
+          nodePort: "32222" # In case type = NodePort
+  
