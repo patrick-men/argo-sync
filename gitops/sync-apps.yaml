@@ -9,20 +9,27 @@ spec:
     # - repoURL: https://github.com/patrick-men/argo-sync
     #   path: apps/gitea
     #   targetRevision: HEAD
+
     - repoURL: https://github.com/patrick-men/argo-sync
       path: apps/kf2
       targetRevision: HEAD
+
+    # - repoURL: https://github.com/patrick-men/argo-sync
+    #   path: apps/kuma
+    #   targetRevision: HEAD
+
     # - repoURL: https://github.com/patrick-men/argo-sync
     #   path: apps/roll
     #   targetRevision: HEAD
+    
     # - repoURL: https://github.com/patrick-men/argo-sync
     #   path: apps/inss
     #   targetRevision: HEAD
 
 
     - repoURL: https://github.com/patrick-men/argo-sync
-      path: apps/testing
-      targetRevision: testing
+      path: apps/dev
+      targetRevision: dev
 
       
   destination:
