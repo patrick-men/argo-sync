@@ -26,6 +26,9 @@ spec:
           pvCapacity: "5Gi"
           storageClassName: "kuma-sc"
           localPath: "/mnt/raiddata/kuma"
+          nodeAffinityNodeSelectorTermsKey: "kubernetes.io/hostname"
+          nodeAffinityNodeSelectorTermsOperator: "In"
+          nodeAffinityNodeSelectorTermsValue: "patrick"
         service:
           type: "NodePort"
           nodePort: "32222" # In case type = NodePort
