@@ -28,9 +28,9 @@ spec:
 
     ################################################################################################################################################
 
-    - repoURL: https://github.com/patrick-men/argo-sync
-      path: apps/dev
-      targetRevision: dev
+    # - repoURL: https://github.com/patrick-men/argo-sync
+    #   path: apps/dev
+    #   targetRevision: dev
 
       
   destination:
